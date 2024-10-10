@@ -1,0 +1,18 @@
+const express = require('express');
+const router = express.Router();
+
+const sampleController = require('../controllers/sampleController');
+const sampleMW = require('../middlewares/sampleMWDisplay');
+const validateMW = require('../middlewares/validateInput');
+const {sampleLogin} = require('../controllers/userLogin');
+const { accessGranted } = require('../controllers/accessGranted');
+const { verifyJWT } = require('../middlewares/verifyJWT');
+
+router.get('/get', sampleController.getData);
+router.post('/post', validateMW, sampleController.postData);
+router.get('/redirect', sampleController.redirectexample);
+router.get('/sampleMW', sampleMW, sampleController.getData);
+router.post('/login', sampleLogin);
+router.get('/access', verifyJWT, accessGranted);
+
+module.exports = router;

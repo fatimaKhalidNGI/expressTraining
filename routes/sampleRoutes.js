@@ -5,7 +5,7 @@ const sampleController = require('../controllers/sampleController');
 const sampleMW = require('../middlewares/sampleMWDisplay');
 const validateMW = require('../middlewares/validateInput');
 const {sampleLogin} = require('../controllers/userLogin');
-const { accessGranted } = require('../controllers/accessGranted');
+const { accessGranted } = require('../controllers/accessGrantedController');
 const { verifyJWT } = require('../middlewares/verifyJWT');
 
 router.get('/get', sampleController.getData);

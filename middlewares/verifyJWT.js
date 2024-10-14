@@ -19,7 +19,8 @@ const verifyJWT = (req, res, next) => {
             } else {
                 console.log("Inside verifyJWT");
 
-                req.access = decoded.email;
+                req.email = decoded.email;
+                req.role = decoded.role;
 
                 next();
             }

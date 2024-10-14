@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
 
 const sampleLogin = async(req, res) => {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     let matchFlag;
 
-    if(!email || ! password){
+    if(!email || !password || !role){
         return res.status(400).send("Credentials missing!");
     }
 
@@ -18,7 +18,8 @@ const sampleLogin = async(req, res) => {
         const accessToken = jwt.sign(
             {
                 "email" : email,
-                "password" : password
+                "password" : password,
+                "role" : role
             },
             process.env.ACCESS_KEY_SECRET,
             {expiresIn : '2m'}
@@ -28,7 +29,8 @@ const sampleLogin = async(req, res) => {
         const refreshToken = jwt.sign(
             {
                 "email" : email,
-                "password" : password
+                "password" : password,
+                "role" : role
             },
             process.env.REFRESH_KEY_SECRET,
             {expiresIn : '5m'}

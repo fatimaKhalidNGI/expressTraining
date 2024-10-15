@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Enter Details
+        </title>
+    </head>
+
+    <body>
+        <h1>Enter your details</h1>
+        <!-- <% if(error) { %>
+            <p style="color: red;">
+                <%= error %>
+            </p>
+        <% } %> -->
+
+        <form action="/sample/login" method="POST">
+            <div>
+                <label for="email">Email: </label>
+                <input type="text" required id="email" name="email" placeholder="enter email">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" required id="password" name="password" placeholder="password">
+            </div>
+
+            <div>
+                <label for="role">Role: </label>
+                <input type="text" required id="role" name="role" placeholder="role">
+            </div>
+            <button type="submit"> Login </button>
+        </form>
+    </body>
+</html>

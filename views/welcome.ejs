@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Welcome
+        </title>
+    </head>
+    <body>
+        <h1>
+            Welcome <%= email %>
+        </h1>
+        <button type="button" id="Admin Page">
+            Admin
+        </button>
+        <button type="button" id="Staff Page">
+            Staff
+        </button>
+        <button type="button" id="User Page">
+            User
+        </button>
+    </body>
+
+    <script>
+        document.getElementById("Admin Page").addEventListener('click', () => {
+            window.location.href = '/sample/accessCheck';
+        });
+
+        document.getElementById("Staff Page").addEventListener('click', () => {
+            window.location.href = '/sample/accessCheck';
+        });
+
+        document.getElementById("User Page").addEventListener('click', () => {
+            window.location.href = '/sample/accessCheck';
+        });
+    </script>
+</html>

@@ -41,7 +41,10 @@ const sampleLogin = async(req, res) => {
             "refresh" : refreshToken
         }
 
-        res.status(200).json(tokenObj);
+        console.log(tokenObj);
+
+        res.cookie('jwt', refreshToken, { maxAge : 24*3600*1000 });
+        res.render('welcome', { email : email});
     } else {
         return res.status(400).send("Wrong credentials");
     }

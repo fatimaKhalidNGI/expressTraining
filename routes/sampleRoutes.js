@@ -7,17 +7,16 @@ const validateMW = require('../middlewares/validateInput');
 const {sampleLogin} = require('../controllers/userLogin');
 const { accessGranted } = require('../controllers/accessGranted');
 const { verifyJWT } = require('../middlewares/verifyJWT');
+const { refreshToken } = require('../controllers/refreshTokenController');
 
-router.get('/get', sampleController.getData);
+router.get('/home', sampleController.getData);
 router.post('/post', validateMW, sampleController.postData);
-router.get('/redirect', sampleController.redirectexample);
-router.get('/sampleMW', sampleMW, sampleController.getData);
 router.post('/login', sampleLogin);
+router.get('/refresh', refreshToken);
 
 router.use(verifyJWT);
-router.get('/accessAdmin', accessGrantedController.accessGranted_admin);
-router.get('/accessStaff', accessGrantedController.accessGranted_staff);
-router.get('/accessUser', accessGrantedController.accessGranted_users);
+router.get('/accessCheck', accessGrantedController.accessRole);
+
 
 
 module.exports = router;

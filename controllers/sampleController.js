@@ -1,12 +1,5 @@
 const getData = (req, res) => {
-    const obj = {
-        "name" : "Fatima Khalid",
-        "age" : 22,
-        "email" : "fatima@example.com",
-        "middleWareMessage" : req.body.message
-    }
-
-    res.status(200).json(obj);
+    res.render('login', { error : "Invalid credentials"});
 }
 
 const postData = (req, res) => {

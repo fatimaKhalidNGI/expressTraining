@@ -1,9 +1,12 @@
-const accessGranted = async(req, res) => {
-    if(req.access){
-        res.status(200).send("Access granted");
+const accessRole = (req, res) => {
+    if(req.email){
+        if(req.role === "Admin" || req.role === "Staff" || req.role === "User"){
+            res.status(200).send("Access granted");
+        }
     } else {
-        res.status(401).send("Access denied!");
+        return res.status(401).send("Unauthorized");
     }
 }
 
-module.exports = { accessGranted };
+module.exports = { accessRole };
+

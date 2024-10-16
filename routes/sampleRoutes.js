@@ -8,15 +8,21 @@ const {sampleLogin} = require('../controllers/userLogin');
 const { accessGranted } = require('../controllers/accessGranted');
 const { verifyJWT } = require('../middlewares/verifyJWT');
 const { refreshToken } = require('../controllers/refreshTokenController');
+const { dataValidation_joi } = require('../middlewares/validateInput_joi');
 
 router.get('/home', sampleController.getData);
-router.post('/post', validateMW, sampleController.postData);
+
+//route with express-validator input validation + sanitization
+//router.post('/post', validateMW, sampleController.postData);
+
+//route with joi input validation and sanitization
+router.post('/post', dataValidation_joi, sampleController.postData);
+
 router.post('/login', sampleLogin);
+
 router.get('/refresh', refreshToken);
 
 router.use(verifyJWT);
 router.get('/accessCheck', accessGrantedController.accessRole);
-
-
 
 module.exports = router;
